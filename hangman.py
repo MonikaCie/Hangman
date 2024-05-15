@@ -10,9 +10,14 @@ def generateWord(words):
     
 def hangman():
     word = generateWord(words)
-    correctLetters = set(word) 
-    letters = set(string.ascii_uppercase)
-    selectedLetters = set()
+    correctLetters = set(word) #Letters present in the word
+    letters = set(string.ascii_uppercase) #All letters
+    selectedLetters = set() #Letters selected by a player
     playerLetter = input('Choose a letter => ').upper()
+    
+    if playerLetter in letters and playerLetter not in selectedLetters:
+        selectedLetters.add(playerLetter)
+        if playerLetter in correctLetters:
+            correctLetters.remove(playerLetter)
     
 hangman()
